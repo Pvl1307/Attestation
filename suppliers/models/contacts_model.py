@@ -3,6 +3,7 @@ from django.db import models
 
 class Contacts(models.Model):
     """Модуль контактов звена"""
+    name = models.CharField(max_length=200, verbose_name='Название организации')
     email = models.EmailField(verbose_name='Электронная почта')
     country = models.CharField(max_length=50, verbose_name='Страна')
     city = models.CharField(max_length=50, verbose_name='Город')
