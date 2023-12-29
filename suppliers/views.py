@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework.filters import SearchFilter
 from rest_framework.viewsets import ModelViewSet
 
 from suppliers.models import Contacts, Product, Network
@@ -39,6 +40,8 @@ class NetworkCreateAPIView(generics.CreateAPIView):
 class NetworkListAPIView(generics.ListAPIView):
     serializer_class = NetworkSerializer
     queryset = Network.objects.all()
+    filter_backends = [SearchFilter]
+    search_fields = ['contacts__country']
 
 
 class NetworkRetrieveAPIView(generics.RetrieveAPIView):
